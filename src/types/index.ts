@@ -6,6 +6,8 @@ export interface Influencer {
   audienceType: string;
   topLocations: string[];
   engagementRate: number;
+  followers: string;
+  bio: string;
   sampleCaption: string;
 }
 

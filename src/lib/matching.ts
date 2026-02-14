@@ -11,7 +11,7 @@ export function matchInfluencers(
     // Niche match +40
     if (inf.niche.toLowerCase() === form.niche.toLowerCase()) {
       score += 40;
-      reasons.push(`specializes in ${inf.niche}`);
+      reasons.push(`perfect niche alignment`);
     }
 
     // Location match +25
@@ -24,15 +24,15 @@ export function matchInfluencers(
       score += 25;
       const locStr =
         form.location === "All Indore"
-          ? "across Indore"
-          : `in ${form.location}`;
-      reasons.push(`strong presence ${locStr}`);
+          ? "city-wide reach"
+          : `strong presence in ${form.location}`;
+      reasons.push(locStr);
     }
 
     // Age match +20
     if (inf.audienceAge === form.audienceAge) {
       score += 20;
-      reasons.push(`audience aligns with ${form.audienceAge} age group`);
+      reasons.push(`exact age demographic match`);
     }
 
     // Persona keyword match +15
@@ -43,12 +43,12 @@ export function matchInfluencers(
     );
     if (hasPersonaMatch) {
       score += 15;
-      reasons.push(`resonates with your target persona`);
+      reasons.push(`matching audience persona`);
     }
 
     const insight =
       reasons.length > 0
-        ? `${inf.name} ${reasons.join(", ")}, with a ${inf.engagementRate}% engagement rate.`
+        ? `Strong match due to ${reasons.join(", ")}. ${inf.engagementRate}% engagement rate with ${inf.followers} followers.`
         : `${inf.name} has a ${inf.engagementRate}% engagement rate in Indore.`;
 
     return { ...inf, score, insight };
