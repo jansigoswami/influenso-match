@@ -13,14 +13,14 @@ const OnboardingForm = () => {
     niche: "",
     audienceAge: "",
     persona: "",
-    location: "",
+    location: ""
   });
 
   const update = (field: keyof BusinessForm, value: string) =>
-    setForm((prev) => ({ ...prev, [field]: value }));
+  setForm((prev) => ({ ...prev, [field]: value }));
 
   const isValid =
-    form.pitch.trim() && form.niche && form.audienceAge && form.persona.trim() && form.location;
+  form.pitch.trim() && form.niche && form.audienceAge && form.persona.trim() && form.location;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -55,8 +55,8 @@ const OnboardingForm = () => {
                 value={form.pitch}
                 onChange={(e) => update("pitch", e.target.value)}
                 placeholder="Describe your business in a sentence..."
-                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none transition-shadow"
-              />
+                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring resize-none transition-shadow" />
+
             </div>
 
             {/* Niche */}
@@ -67,12 +67,12 @@ const OnboardingForm = () => {
               <select
                 value={form.niche}
                 onChange={(e) => update("niche", e.target.value)}
-                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow"
-              >
+                className="w-full rounded-2xl border bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow border-destructive border-solid">
+
                 <option value="">Select a niche</option>
-                {NICHES.map((n) => (
-                  <option key={n} value={n}>{n}</option>
-                ))}
+                {NICHES.map((n) =>
+                <option key={n} value={n}>{n}</option>
+                )}
               </select>
             </div>
 
@@ -84,12 +84,12 @@ const OnboardingForm = () => {
               <select
                 value={form.audienceAge}
                 onChange={(e) => update("audienceAge", e.target.value)}
-                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow"
-              >
+                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow">
+
                 <option value="">Select age range</option>
-                {AGE_RANGES.map((a) => (
-                  <option key={a} value={a}>{a}</option>
-                ))}
+                {AGE_RANGES.map((a) =>
+                <option key={a} value={a}>{a}</option>
+                )}
               </select>
             </div>
 
@@ -103,8 +103,8 @@ const OnboardingForm = () => {
                 value={form.persona}
                 onChange={(e) => update("persona", e.target.value)}
                 placeholder="e.g., college students, young professionals"
-                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
-              />
+                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow" />
+
             </div>
 
             {/* Location */}
@@ -115,12 +115,12 @@ const OnboardingForm = () => {
               <select
                 value={form.location}
                 onChange={(e) => update("location", e.target.value)}
-                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow"
-              >
+                className="w-full rounded-2xl border border-input bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow">
+
                 <option value="">Select location</option>
-                {LOCATIONS.map((l) => (
-                  <option key={l} value={l}>{l}</option>
-                ))}
+                {LOCATIONS.map((l) =>
+                <option key={l} value={l}>{l}</option>
+                )}
               </select>
             </div>
           </div>
@@ -128,14 +128,14 @@ const OnboardingForm = () => {
           <button
             type="submit"
             disabled={!isValid}
-            className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-semibold text-base shadow-ios-lg hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-40 disabled:pointer-events-none"
-          >
+            className="w-full py-4 rounded-2xl bg-primary text-primary-foreground font-semibold text-base shadow-ios-lg hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-40 disabled:pointer-events-none">
+
             Find Matches →
           </button>
         </form>
       </div>
-    </div>
-  );
+    </div>);
+
 };
 
 export default OnboardingForm;
