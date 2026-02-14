@@ -3,6 +3,7 @@ import { matchInfluencers } from "@/lib/matching";
 import { BusinessForm, MatchedInfluencer } from "@/types";
 import { ArrowRight, CheckCircle, MapPin, Sparkles, Target, TrendingUp, Users } from "lucide-react";
 import { useState } from "react";
+import NavBar from "./NavBar";
 
 const NICHES = ["Food", "Fashion", "Tech", "Education", "Lifestyle"];
 const AGE_RANGES = ["18–24", "25–34", "35+"];
@@ -47,39 +48,15 @@ const InfluensoApp = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header */}
-      <header className="border-b border-border">
-        <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
-              <path d="M2 17L12 22L22 17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M2 12L12 17L22 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-            <span className="text-xl font-medium tracking-tight">Influenso</span>
-          </div>
-          <div className="loginButton flex gap-2">
-            <button className="group px-7 py-3.5 bg-foreground text-background rounded-md font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">login as influencer</button>
-            <button className="group px-7 py-3.5 bg-foreground text-background rounded-md font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">login as brand</button>
-          </div>
-          {currentStep !== "welcome" && (
-            <button
-              onClick={resetApp}
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Start Over
-            </button>
-          )}
-        </div>
-      </header>
+      <NavBar showStartOver={currentStep !== "welcome"} onStartOver={resetApp} />
 
       {/* Welcome */}
       {currentStep === "welcome" && (
         <div className="max-w-5xl mx-auto px-6">
           <div className="pt-32 pb-20 text-center">
-            <h1 className="text-5xl md:text-7xl font-light tracking-tight mb-8 leading-tight">
-              AI influencer matching<br />
-              <span className="font-normal">for modern brands</span>
+            <h1 className="text-5xl md:text-7xl text-[#da00ff] font-[500] tracking-tight mb-8 leading-tight tracking-[-0.09em]">
+              AI <span className="font-serif font-light tracking-[-0.05em]"><em> Influencer</em></span> matching<br />for 
+              <span className="font-serif font-light text-[#000] tracking-[-0.05em]"><em> Modern brands.</em></span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
               We connect businesses with verified influencers in Indore. From strategy to campaign execution.

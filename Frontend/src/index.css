@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap");
+
+@font-face {
+  font-family: 'Apple Garamond';
+  src: url('/fonts/AppleGaramond-LightItalic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
 
 @tailwind base;
 @tailwind components;
@@ -59,8 +61,8 @@
     --chart-4: 258 89% 66%;
     --chart-5: 240 3% 46%;
     --sidebar: 0 0% 98%;
-    --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
-    --font-serif: 'Cormorant Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    --font-serif: Apple Garamond Light Italic, 'Instrument Serif', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
     --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
     --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
     --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
@@ -120,11 +122,56 @@
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  * { box-sizing: border-box; }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-sans antialiased;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.45;
   }
+  :focus { outline: 2px solid hsl(var(--ring) / 0.9); outline-offset: 2px; }
+}
+
+@layer components {
+  .form-label { @apply text-sm font-medium text-[hsl(var(--muted-foreground))] mb-1 block; }
+  /* Underline style inputs: tall, bottom border only, subtle placeholder */
+  .form-input {
+    @apply w-full px-3 py-4 min-h-[56px] bg-transparent text-[hsl(var(--card-foreground))] transition-colors;
+    border: 0;
+    border-bottom: 1px solid hsl(var(--input));
+    border-radius: 0;
+  }
+  .form-input:focus {
+    outline: none;
+    border-bottom-width: 2px;
+    border-bottom-color: hsl(var(--primary));
+  }
+  .form-input::placeholder {
+    color: hsl(var(--muted-foreground) / 0.55);
+  }
+
+  .form-select {
+    @apply w-full px-3 py-3 min-h-[56px] bg-transparent text-[hsl(var(--card-foreground))] transition-colors appearance-none;
+    border: 0;
+    border-bottom: 1px solid hsl(var(--input));
+    border-radius: 0;
+  }
+  .form-select:focus {
+    outline: none;
+    border-bottom-width: 2px;
+    border-bottom-color: hsl(var(--primary));
+  }
+  .form-select::placeholder { color: hsl(var(--muted-foreground) / 0.55); }
+  .form-textarea { @apply w-full px-3 py-2 rounded-md border bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] border-[hsl(var(--input))] transition-colors focus:ring-2 focus:ring-[hsl(var(--ring))] focus:border-transparent; }
+  .form-help { @apply text-xs text-[hsl(var(--muted-foreground))] mt-1; }
+  .form-error { @apply text-xs text-[hsl(var(--destructive))] mt-1; }
+
+  .btn { @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-md font-medium border transition-opacity; }
+  .btn-primary { @apply btn bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))] border-transparent shadow-sm hover:opacity-95; }
+  .btn-ghost { @apply btn bg-transparent border border-[hsl(var(--border))] text-[hsl(var(--foreground))]; }
+  .btn-link { @apply text-sm text-[hsl(var(--primary))] underline; }
+
+  .form-section { @apply bg-[hsl(var(--card))] border border-[hsl(var(--border))] rounded-lg p-6 shadow-sm; }
+  .muted { @apply text-[hsl(var(--muted-foreground))]; }
 }

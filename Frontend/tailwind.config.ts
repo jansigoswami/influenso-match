@@ -28,7 +28,7 @@ export default {
   				'sans-serif'
   			],
   			serif: [
-  				'Cormorant Garamond',
+  				'Apple Garamond',
   				'ui-serif',
   				'Georgia',
   				'Cambria',
