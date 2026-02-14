@@ -1,7 +1,7 @@
-import OnboardingForm from "@/components/OnboardingForm";
+import InfluensoApp from "@/components/InfluensoApp";
 
 const Index = () => {
-  return <OnboardingForm />;
+  return <InfluensoApp />;
 };
 
 export default Index;
