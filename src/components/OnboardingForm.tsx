@@ -67,7 +67,7 @@ const OnboardingForm = () => {
               <select
                 value={form.niche}
                 onChange={(e) => update("niche", e.target.value)}
-                className="w-full rounded-2xl border bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow border-destructive border-solid">
+                className="w-full rounded-2xl border bg-secondary/50 px-4 py-3 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring appearance-none transition-shadow border-solid border-primary">
 
                 <option value="">Select a niche</option>
                 {NICHES.map((n) =>
