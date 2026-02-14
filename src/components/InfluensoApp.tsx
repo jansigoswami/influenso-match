@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { ArrowRight, MapPin, Users, TrendingUp, CheckCircle, Target, Sparkles } from "lucide-react";
-import { BusinessForm, MatchedInfluencer } from "@/types";
-import { matchInfluencers } from "@/lib/matching";
 import influencersData from "@/data/influencers.json";
+import { matchInfluencers } from "@/lib/matching";
+import { BusinessForm, MatchedInfluencer } from "@/types";
+import { ArrowRight, CheckCircle, MapPin, Sparkles, Target, TrendingUp, Users } from "lucide-react";
+import { useState } from "react";
 
 const NICHES = ["Food", "Fashion", "Tech", "Education", "Lifestyle"];
 const AGE_RANGES = ["18–24", "25–34", "35+"];
