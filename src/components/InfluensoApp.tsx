@@ -58,6 +58,10 @@ const InfluensoApp = () => {
             </svg>
             <span className="text-xl font-medium tracking-tight">Influenso</span>
           </div>
+          <div className="loginButton flex gap-2">
+            <button className="group px-7 py-3.5 bg-foreground text-background rounded-md font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">login as influencer</button>
+            <button className="group px-7 py-3.5 bg-foreground text-background rounded-md font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">login as brand</button>
+          </div>
           {currentStep !== "welcome" && (
             <button
               onClick={resetApp}
