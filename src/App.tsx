@@ -6,6 +6,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Influencer from "./pages/Influencer";
 import Brand from "./pages/Brand";
+import LoginBrand from "./components/loginBrand";
+import LoginInfluencer from "./components/loginInfluencer";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +22,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/influencer" element={<Influencer />} />
           <Route path="/brand" element={<Brand />} />
+          <Route path="/loginB" element={<LoginBrand />} />
+          <Route path="/loginI" element={<LoginInfluencer />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

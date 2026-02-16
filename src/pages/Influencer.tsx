@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import NavBar from "@/components/NavBar";
 
+import { supabase } from "../lib/supabaseClient";
+
 type InfluencerForm = {
   name: string;
   email: string;
   handle: string;
   platform: string;
   followers: string;
-  category: string;
+  password: string;
   bio: string;
   profileUrl: string;
   portfolioUrl: string;
@@ -20,7 +22,7 @@ const initialForm: InfluencerForm = {
   handle: "",
   platform: "",
   followers: "",
-  category: "",
+  password: "",
   bio: "",
   profileUrl: "",
   portfolioUrl: "",
@@ -46,7 +48,7 @@ export default function Influencer(): JSX.Element {
     if (!form.handle.trim()) next.handle = "Social handle is required";
     if (!form.platform) next.platform = "Select a platform";
     if (form.followers && !/^\d+$/.test(form.followers)) next.followers = "Enter a whole number";
-    if (!form.category.trim()) next.category = "Category is required";
+    if (!form.password.trim()) next.password = "Password is required";
     if (!form.bio.trim()) next.bio = "Short bio is required";
     if (!form.agree) next.agree = "You must agree to the terms";
 
@@ -60,17 +62,33 @@ export default function Influencer(): JSX.Element {
     setSubmitting(true);
 
     try {
-      // Replace this with a real API call when ready
-      await new Promise((r) => setTimeout(r, 700));
-      // For now just log the form
-      // eslint-disable-next-line no-console
-      console.log("Influencer registration:", form);
-      alert("Registration submitted — check console for payload.");
+      const { error } = await supabase
+        .from("user_influencer")
+        .insert([
+          {
+            full_name: form.name,
+            email: form.email,
+            social_handle: form.handle,
+            primary_platform: form.platform,
+            followers: form.followers ? parseInt(form.followers, 10) : null,
+            category: form.password,
+            bio: form.bio,
+            profile_url: form.profileUrl,
+            portfolio: form.portfolioUrl,
+            agree_to_share: form.agree,
+          },
+        ]);
+
+      if (error) {
+        throw error;
+      }
+
+      alert("Registration submitted successfully!");
       setForm(initialForm);
     } catch (err) {
       // eslint-disable-next-line no-console
       console.error(err);
-      alert("Submission failed — try again.");
+      alert("Submission failed — please try again.");
     } finally {
       setSubmitting(false);
     }
@@ -153,14 +171,15 @@ export default function Influencer(): JSX.Element {
             </label>
 
             <label className="flex flex-col">
-              <span className="form-label">Category / Niche</span>
+              <span className="form-label">Password</span>
               <input
                 className="form-input"
-                value={form.category}
-                onChange={(e) => handleChange("category", e.target.value)}
-                placeholder="Beauty, Gaming, Fitness, etc."
+                value={form.password}
+                onChange={(e) => handleChange("password", e.target.value)}
+                placeholder="Enter your password"
+                type="password"
               />
-              {errors.category && <span className="form-error">{errors.category}</span>}
+              {errors.password && <span className="form-error">{errors.password}</span>}
             </label>
           </div>
 

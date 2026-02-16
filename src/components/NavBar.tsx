@@ -22,10 +22,10 @@ export default function NavBar({ showStartOver, onStartOver }: NavBarProps) {
                 </Link>
 
                 <div className="loginButton flex gap-2">
-                    <Link to="/influencer">
+                    <Link to="/loginI">
                         <button className="group px-7 py-3.5 bg-foreground text-background rounded-md font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">login as influencer</button>
                     </Link>
-                    <Link to="/brand">
+                    <Link to="/loginB">
                         <button className="group px-7 py-3.5 bg-foreground text-background rounded-md font-medium hover:opacity-90 transition-opacity inline-flex items-center gap-2">login as brand</button>
                     </Link>
                 </div>

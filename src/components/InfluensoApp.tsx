@@ -55,7 +55,7 @@ const InfluensoApp = () => {
         <div className="max-w-5xl mx-auto px-6">
           <div className="pt-32 pb-20 text-center">
             <h1 className="text-5xl md:text-7xl text-[#da00ff] font-[500] tracking-tight mb-8 leading-tight tracking-[-0.09em]">
-              AI <span className="font-serif font-light tracking-[-0.05em]"><em> Influencer</em></span> matching<br />for 
+              Bridge <span className="font-serif font-light tracking-[-0.05em]"><em> Influencer</em></span> matching<br />for 
               <span className="font-serif font-light text-[#000] tracking-[-0.05em]"><em> Modern brands.</em></span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
