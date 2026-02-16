@@ -9,11 +9,12 @@ type InfluencerForm = {
   handle: string;
   platform: string;
   followers: string;
-  password: string;
+  category: string;
   bio: string;
   profileUrl: string;
   portfolioUrl: string;
   agree: boolean;
+  password: string;
 };
 
 const initialForm: InfluencerForm = {
@@ -22,11 +23,12 @@ const initialForm: InfluencerForm = {
   handle: "",
   platform: "",
   followers: "",
-  password: "",
+  category: "",
   bio: "",
   profileUrl: "",
   portfolioUrl: "",
   agree: false,
+  password: "",
 };
 
 export default function Influencer(): JSX.Element {
@@ -71,11 +73,12 @@ export default function Influencer(): JSX.Element {
             social_handle: form.handle,
             primary_platform: form.platform,
             followers: form.followers ? parseInt(form.followers, 10) : null,
-            category: form.password,
+            category: form.category,
             bio: form.bio,
             profile_url: form.profileUrl,
             portfolio: form.portfolioUrl,
             agree_to_share: form.agree,
+            password: form.password,
           },
         ]);
 
